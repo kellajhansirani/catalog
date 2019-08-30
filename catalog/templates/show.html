@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show_Data</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+<body>
+	<form action="" method="">
+		<div class="container">
+			<h1 class="mt-5">Register Data</h1><br><br>
+			<div>
+				{% with messages=get_flashed_messages() %}
+				{% if messages %}
+
+				<ul>
+					{% for message in messages %}
+					<li><h3>{{messages}}</h3></li>{% endfor %}
+
+				</ul>
+				{% endif %}
+				{% endwith %}
+			</div>
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Name</th>
+
+						<th scope="col">surname</th>
+						<th scope="col">email</th>
+						<th scope="col">branch</th>
+						<th scope="col">phone</th>
+						<th scope="col" colspan="2">Action</th>
+						
+					</tr>
+					{% for r in reg %}
+					<tr>
+						<td>{{r.id}}</td>
+						<td>{{r.name}}</td>	
+						<td>{{r.surname}}</td>
+						<td>{{r.email}}</td>
+						<td>{{r.branch}}</td>
+						<td>{{r.mobile}}</td>
+						<td><a href="{{url_for('editData',register_id=r.id)}}">Edit</a>
+						<td><a href="{{url_for('deleteData',register_id=r.id)}}">Delete</a></th>
+					</tr>
+					{% endfor %}
+				</thead>
+				
+			</table>
+			
+		
+	
+		</div>
+
+
+	 </form>
+
+</body>
+</html>
